@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Affiliate 225</title>
+<style>
+  /* Reset & body */
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:Arial,sans-serif;background:#111;color:#fff;text-align:center;padding:40px 20px;overflow-x:hidden;}
+
+  /* Judul Animasi Emas */
+  h1{
+    font-size:2.8rem;
+    color: gold;
+    margin-bottom:20px;
+    animation: goldGlow 2s infinite;
+    text-transform: uppercase;
+  }
+  @keyframes goldGlow{
+    0%{text-shadow:0 0 5px gold;}
+    50%{text-shadow:0 0 25px gold,0 0 40px orange;}
+    100%{text-shadow:0 0 5px gold;}
+  }
+
+  /* Paragraph */
+  p{font-size:1.2rem;margin-bottom:25px;line-height:1.5;}
+
+  /* Tombol WhatsApp */
+  .btn{
+    display:inline-block;
+    padding:15px 35px;
+    font-size:1.2rem;
+    color:#fff;
+    background:gold;
+    border-radius:8px;
+    text-decoration:none;
+    font-weight:bold;
+    transition:0.3s;
+    box-shadow:0 0 10px gold;
+  }
+  .btn:hover{background:#e6b800;box-shadow:0 0 20px gold;}
+
+  /* Popup */
+  .popup{
+    position:fixed;
+    bottom:20px;
+    left:20px;
+    background:rgba(0,0,0,0.95);
+    color:#fff;
+    padding:15px 20px;
+    border-radius:12px;
+    display:none;
+    box-shadow:0 0 15px gold;
+    font-size:1rem;
+    z-index:999;
+  }
+
+  /* Fake live komisi */
+  .live-commission{
+    margin-top:40px;
+    font-size:1.5rem;
+    color:#0f0;
+    font-weight:bold;
+    text-shadow:0 0 5px #0f0;
+  }
+
+  /* Countdown */
+  .countdown{
+    margin:30px 0;
+    font-size:1.3rem;
+    color: #ff0;
+    font-weight:bold;
+    text-shadow:0 0 5px #ff0;
+  }
+
+</style>
+</head>
+<body>
+
+<h1>PROGRAM AFFILIATE MODAL 225</h1>
+<p>Bangun income dari HP dengan sistem referral sederhana</p>
+<p><strong>Komisi Rp50.000 setiap referral</strong></p>
+
+<a href="https://wa.me/6289515297801" class="btn">DAFTAR SEKARANG</a>
+
+<div class="countdown" id="countdown">Promo berakhir dalam: 00:10:00</div>
+<div class="live-commission" id="live">Total Komisi Terkumpul: Rp0</div>
+
+<!-- Popup fake join -->
+<div class="popup" id="popup"></div>
+
+<script>
+  // ===== Fake Popup Join =====
+  const popup = document.getElementById('popup');
+  const users = ["Andi","Siti","Budi","Rina","Dedi","Tina","Joko","Maya"];
+  const actions = ["bergabung!","mendaftar!","join sekarang!"];
+  function showPopup(){
+    const user = users[Math.floor(Math.random()*users.length)];
+    const action = actions[Math.floor(Math.random()*actions.length)];
+    const amount = Math.floor(Math.random()*50 + 20); // komisi acak
+    popup.innerHTML = `${user} ${action} & mendapatkan Rp${amount}.000!`;
+    popup.style.display = "block";
+    setTimeout(()=>{popup.style.display="none";},4000);
+  }
+  setInterval(showPopup,6000);
+
+  // ===== Fake Live Komisi =====
+  const live = document.getElementById('live');
+  let total = 0;
+  function addCommission(){
+    const amount = Math.floor(Math.random()*50+20);
+    total += amount*1000;
+    live.innerHTML = `Total Komisi Terkumpul: Rp${total.toLocaleString()}`;
+  }
+  setInterval(addCommission,5000);
+
+  // ===== Countdown Timer =====
+  let countdown = 600; // 10 menit = 600 detik
+  const countdownEl = document.getElementById('countdown');
+  setInterval(()=>{
+    let minutes = Math.floor(countdown/60);
+    let seconds = countdown%60;
+    countdownEl.innerHTML = `Promo berakhir dalam: ${minutes.toString().padStart(2,'0')}:${seconds.toString().padStart(2,'0')}`;
+    if(countdown>0) countdown--;
+  },1000);
+
+</script>
+
+</body>
+</html>
